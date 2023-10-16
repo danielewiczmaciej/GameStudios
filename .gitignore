@@ -1,0 +1,4 @@
+# .gitignore
+/target/           # Ignore build artifacts
+/.idea/            # Ignore IDE-specific files
+*.iml              # Ignore IntelliJ IDEA project files
