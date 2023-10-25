@@ -1,4 +1,4 @@
-package com.example.rpggame;
+package com.example.gameStudios;
 
 import java.util.Objects;
 
