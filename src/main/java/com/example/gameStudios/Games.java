@@ -8,10 +8,19 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
+@SpringBootApplication
 public class Games {
     public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(Games.class, args);
+
+        ConsoleApplicationRunner consoleApplicationRunner = context.getBean(ConsoleApplicationRunner.class);
+        consoleApplicationRunner.run(args);
         Set<Studio> studios = new HashSet<>();
+
         Studio CDProjectRed = Studio.builder()
                 .name("CD Projekt Red")
                 .yearOfFoundation(2002)
@@ -19,7 +28,6 @@ public class Games {
                 .build();
         Game witcher = Game.builder().name("Witcher").releaseYear(2007).studio(CDProjectRed).build();
         Game witcher3 = Game.builder().name("Witcher 3").releaseYear(2015).studio(CDProjectRed).build();
-
         Studio rockstar = Studio.builder()
                 .name("Rockstar")
                 .yearOfFoundation(1998)

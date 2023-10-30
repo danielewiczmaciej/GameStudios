@@ -1,10 +1,14 @@
 package com.example.gameStudios;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class GameDTO implements Comparable<GameDTO> {
     private String name;
     private int releaseYear;
+
+    private Category category;
+    private UUID id;
 
     public GameDTO(String name, int releaseYear) {
         this.name = name;
@@ -47,6 +51,11 @@ public class GameDTO implements Comparable<GameDTO> {
         return "GameDTO{" +
                 "name='" + name + '\'' +
                 ", releaseYear=" + releaseYear +
+                ", category=" + category +
                 '}';
+    }
+
+    public Object getId() {
+        return null;
     }
 }
