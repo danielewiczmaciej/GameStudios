@@ -8,6 +8,10 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
+import com.example.gameStudios.dto.GameDTO;
+import com.example.gameStudios.entity.Game;
+import com.example.gameStudios.entity.Studio;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -80,7 +84,7 @@ public class Games {
                 .flatMap(studio -> studio.getGames().stream())
                 .map(game -> new GameDTO(game.getName(), game.getReleaseYear()))
                 .sorted()
-                .collect(Collectors.toList());
+                .toList();
 
         // Step 2: Print the sorted DTOs
         sortedDTOs.forEach(dto -> {

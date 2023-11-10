@@ -1,7 +1,11 @@
 package com.example.gameStudios;
 
-import com.example.gameStudios.GameService;
-import com.example.gameStudios.StudioService;
+import com.example.gameStudios.entity.Category;
+import com.example.gameStudios.entity.Game;
+import com.example.gameStudios.entity.Studio;
+import com.example.gameStudios.service.CategoryService;
+import com.example.gameStudios.service.GameService;
+import com.example.gameStudios.service.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

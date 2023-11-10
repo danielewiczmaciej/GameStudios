@@ -1,5 +1,11 @@
 package com.example.gameStudios;
 
+import com.example.gameStudios.entity.Category;
+import com.example.gameStudios.entity.Game;
+import com.example.gameStudios.entity.Studio;
+import com.example.gameStudios.service.CategoryService;
+import com.example.gameStudios.service.GameService;
+import com.example.gameStudios.service.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -32,9 +38,10 @@ public class ConsoleApplicationRunner implements CommandLineRunner {
             System.out.println("3. Add New Studio");
             System.out.println("4. Add New Game");
             System.out.println("5. Delete Element");
-            System.out.println("6. Exit");
+            System.out.println("6. Delete Game");
+            System.out.println("7. Exit");
 
-            System.out.print("Enter a command (1-5): ");
+            System.out.print("Enter a command (1-7): ");
             int command = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
 
@@ -52,9 +59,12 @@ public class ConsoleApplicationRunner implements CommandLineRunner {
                     addGame();
                     break;
                 case 5:
-                    deleteElement();
+                    deleteStudio();
                     break;
                 case 6:
+                    deleteGame();
+                    break;
+                case 7:
                     System.out.println("Exiting application.");
                     System.exit(0);
                     return;
@@ -129,7 +139,7 @@ public class ConsoleApplicationRunner implements CommandLineRunner {
         }
     }
 
-    private void deleteElement() {
+    private void deleteStudio() {
         System.out.print("Enter the name of the studio to delete: ");
         Scanner scanner = new Scanner(System.in);
         String studioName = scanner.nextLine();
@@ -140,6 +150,20 @@ public class ConsoleApplicationRunner implements CommandLineRunner {
             System.out.println("Studio '" + studioName + "' deleted.");
         } else {
             System.out.println("Studio '" + studioName + "' not found or could not be deleted.");
+        }
+    }
+
+    private void deleteGame() {
+        System.out.print("Enter the name of the game to delete: ");
+        Scanner scanner = new Scanner(System.in);
+        String gameName = scanner.nextLine();
+
+        boolean deleted = gameService.deleteGame(gameName);
+
+        if (deleted) {
+            System.out.println("Studio '" + gameName + "' deleted.");
+        } else {
+            System.out.println("Studio '" + gameName + "' not found or could not be deleted.");
         }
     }
 }
