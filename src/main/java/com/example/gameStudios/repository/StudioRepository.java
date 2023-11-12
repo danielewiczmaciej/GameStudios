@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface StudioRepository extends JpaRepository<Studio, UUID> {
+
     Studio findByName(String name);
 
     Studio findByYearOfFoundation(int yearOfFoundation);

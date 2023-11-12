@@ -1,14 +1,17 @@
 package com.example.gameStudios.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jdk.jshell.Snippet;
+import lombok.*;
 
 import java.util.UUID;
 
 @Getter
 @Entity
 @Table(name = "categories")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Category {
 
     @Id
@@ -20,4 +23,19 @@ public class Category {
     @Column(name = "name")
     private String name;
 
+
+    public Category(String name) {
+        this.name = name;;
+    }
+
+    public static class CategoryBuilder {
+        public CategoryBuilder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public Category build() {
+            return new Category(this.id, this.name);
+        }
+    }
 }

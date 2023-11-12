@@ -32,7 +32,7 @@ public class CategoryService {
     }
 
     public Category createCategory(String categoryName) {
-        Category category = new Category();
+        Category category = new Category(categoryName);
         category.setName(categoryName);
         return categoryRepository.save(category);
     }

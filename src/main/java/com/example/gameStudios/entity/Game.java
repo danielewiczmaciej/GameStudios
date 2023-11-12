@@ -1,5 +1,6 @@
 package com.example.gameStudios.entity;
 
+import com.example.gameStudios.repository.StudioRepository;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -51,6 +52,14 @@ public class Game implements Serializable, Comparable<Game> {
         this.category = category;
     }
 
+    public UUID getStudioId() {
+        return this.studio.getId();
+    }
+
+    public UUID getCategoryId() {
+        return this.category.getId();
+    }
+
     public static class GameBuilder {
         private Studio studio; // Add a field to hold the Studio reference
 
@@ -67,6 +76,10 @@ public class Game implements Serializable, Comparable<Game> {
                 this.studio.getGames().add(game);
             }
             return game;
+        }
+
+        public Object categoryId(UUID categoryId) {
+            return this.category;
         }
     }
 
