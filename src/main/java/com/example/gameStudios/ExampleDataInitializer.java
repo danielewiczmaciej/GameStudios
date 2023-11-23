@@ -31,6 +31,7 @@ public class ExampleDataInitializer {
         Category actionCategory = categoryService.createCategory("Action");
         Category rpgCategory = categoryService.createCategory("RPG");
         Category sportsCategory = categoryService.createCategory("Sports");
+        Category multiplayerCategory = categoryService.createCategory("Multiplayer");
         // Game Studios
         Studio cdProjectRed = studioService.createStudio("CD Projekt Red", 2002);
         Studio rockstar = studioService.createStudio("Rockstar", 1998);

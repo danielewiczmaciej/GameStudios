@@ -11,13 +11,10 @@ import java.util.UUID;
 @Service
 public class StudioService {
     private final StudioRepository studioRepository;
-    private final CategoryService categoryService;
-
 
     @Autowired
-    public StudioService(StudioRepository studioRepository, CategoryService categoryService) {
+    public StudioService(StudioRepository studioRepository) {
         this.studioRepository = studioRepository;
-        this.categoryService = categoryService;
     }
 
     public Studio createStudio(String name, int yearOfFoundation) {
@@ -52,5 +49,20 @@ public class StudioService {
         }
 
         return false; // Studio not found or could not be deleted
+    }
+
+    public boolean deleteStudio(UUID studioId) {
+        Studio studio = studioRepository.findById(studioId).orElse(null);
+
+        if (studio != null) {
+            studioRepository.delete(studio);
+            return true; // Studio deleted successfully
+        }
+
+        return false; // Studio not found or could not be deleted
+    }
+
+    public List<Studio> findAll() {
+        return studioRepository.findAll();
     }
 }

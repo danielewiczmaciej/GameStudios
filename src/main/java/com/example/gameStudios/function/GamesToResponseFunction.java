@@ -7,8 +7,9 @@ import com.example.gameStudios.entity.Game;
 import java.util.List;
 import java.util.function.Function;
 
+@Component
 public class GamesToResponseFunction implements Function<List<Game>, GetGamesResponse>{
-    @Override
+
     public GetGamesResponse apply(List<Game> games) {
         return GetGamesResponse.builder()
                 .games(games.stream()

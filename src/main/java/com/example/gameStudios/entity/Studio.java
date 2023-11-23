@@ -34,6 +34,59 @@ public class Studio implements Serializable, Comparable<Studio> {
         return Integer.compare(this.yearOfFoundation, otherStudio.yearOfFoundation);
     }
 
+    public Studio(String name, int yearOfFoundation) {
+        this.name = name;
+        this.yearOfFoundation = yearOfFoundation;
+    }
+
+    public Studio(String name, int yearOfFoundation, Set<Game> games) {
+        this.name = name;
+        this.yearOfFoundation = yearOfFoundation;
+        this.games = games;
+    }
+
+    public Studio(UUID id, String name, int yearOfFoundation) {
+        this.id = id;
+        this.name = name;
+        this.yearOfFoundation = yearOfFoundation;
+    }
+
+    public static class StudioBuilder {
+        private UUID id;
+        private String name;
+        private int yearOfFoundation;
+        private Set<Game> games;
+
+
+        public Studio.StudioBuilder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public Studio.StudioBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Studio.StudioBuilder yearOfFoundation(int yearOfFoundation) {
+            this.yearOfFoundation = yearOfFoundation;
+            return this;
+        }
+
+        public Studio.StudioBuilder games(Set<Game> games) {
+            this.games = games;
+            return this;
+        }
+
+        public Studio build() {
+            return new Studio(this.id, this.name, this.yearOfFoundation, this.games);
+        }
+
+        public String toString() {
+            return "Studio.StudioBuilder(id=" + this.id + ", name=" + this.name + ", yearOfFoundation=" + this.yearOfFoundation + ", games=" + this.games + ")";
+        }
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, yearOfFoundation);

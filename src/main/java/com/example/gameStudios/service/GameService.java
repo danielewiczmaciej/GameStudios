@@ -1,5 +1,6 @@
 package com.example.gameStudios.service;
 
+import com.example.gameStudios.dto.PatchGameRequest;
 import com.example.gameStudios.entity.Category;
 import com.example.gameStudios.entity.Game;
 import com.example.gameStudios.entity.Studio;
@@ -67,5 +68,42 @@ public class GameService {
         }
 
         return false; // Studio not found or could not be deleted
+    }
+
+    public boolean deleteGame(UUID gameId) {
+        Game game = gameRepository.findById(gameId).orElse(null);
+
+        if (game != null) {
+            gameRepository.delete(game);
+            return true; // Studio deleted successfully
+        }
+
+        return false; // Studio not found or could not be deleted
+    }
+
+    public List<Game> findByStudioId(UUID studioId) {
+        return gameRepository.findAllByStudio(studioService.getStudioById(studioId));
+    }
+
+    public List<Game> findByCategoryId(UUID categoryId) {
+        return gameRepository.findAllByCategory(categoryService.getCategoryById(categoryId));
+    }
+
+    public Game findById(UUID gameId) {
+        return gameRepository.findById(gameId).orElse(null);
+    }
+
+    public void createGame(Game apply) {
+        gameRepository.save(apply);
+        apply.getStudio().getGames().add(apply);
+    }
+
+    public void updateGame(UUID gameId, PatchGameRequest patchGameRequest) {
+        Game game = gameRepository.findById(gameId).orElse(null);
+        if (game != null) {
+            game.setName(patchGameRequest.getName());
+            game.setReleaseYear(patchGameRequest.getReleaseYear());
+            gameRepository.save(game);
+        }
     }
 }

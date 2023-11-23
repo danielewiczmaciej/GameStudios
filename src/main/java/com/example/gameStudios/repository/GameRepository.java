@@ -1,6 +1,8 @@
 package com.example.gameStudios.repository;
 
+import com.example.gameStudios.entity.Category;
 import com.example.gameStudios.entity.Game;
+import com.example.gameStudios.entity.Studio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +16,9 @@ public interface GameRepository extends JpaRepository<Game, UUID> {
 
     List<Game> findAllByReleaseYear(int releaseYear);
 
-    List<Game> findAllByStudioId(UUID studioId);
+    List<Game> findAllByStudio(Studio studio);
 
     Optional<Game> findById(UUID gameId);
 
-
+    List<Game> findAllByCategory(Category category);
 }

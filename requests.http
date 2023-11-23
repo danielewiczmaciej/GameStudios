@@ -1,0 +1,68 @@
+### Get all games
+
+GET http://localhost:8080/api/games
+
+### Get single game
+
+GET http://localhost:8080/api/games/4b7dea5c-f695-4857-95a5-eb9ac71b44fc
+
+### Get single game, not existing
+
+GET http://localhost:8080/api/games/6705d075-3343-482f-8372-2f101a16caf0
+
+### Get category games
+
+GET http://localhost:8080/api/categories/68cbb110-6072-4870-8203-bf4ddfe74a87/games
+
+### Get category games, empty
+
+GET http://localhost:8080/api/categories/d93074ca-2baa-4371-9e30-44493d6353a6/games
+
+### Create new game
+
+PUT http://localhost:8080/api/games/887afc02-becf-4423-89fe-9193cc490639
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "name": "Red Dead Redemption 2",
+  "releaseYear": 2018,
+  "categoryId": "68cbb110-6072-4870-8203-bf4ddfe74a87",
+    "studioId": "0994eb32-daea-4d9e-a34f-e68a00cf02bd"
+}
+
+
+### Patch game.
+
+PATCH http://localhost:8080/api/games/4b7dea5c-f695-4857-95a5-eb9ac71b44fc
+Content-Type: application/json
+
+{
+  "name": "Sialalalala 2",
+  "releaseYear": 2023
+}
+
+### Delete game.
+
+DELETE http://localhost:8080/api/games/c9cb95fe-36c8-4665-b4c9-d83e7da80d2d
+
+### Get all studios
+
+GET http://localhost:8080/api/studios
+
+### Get single studio
+
+GET http://localhost:8080/api/studios/0994eb32-daea-4d9e-a34f-e68a00cf02bd
+
+### Get studio games
+
+GET http://localhost:8080/api/studios/0994eb32-daea-4d9e-a34f-e68a00cf02bd/games
+
+### Get single studio, not existing
+
+GET http://localhost:8080/api/studios/66e57331-d506-4ed6-b662-983c4a579db2
+
+### Delete studio
+
+DELETE http://localhost:8080/api/studios/75f05c79-7f30-49f9-bd9a-664b4a5bc193
+
