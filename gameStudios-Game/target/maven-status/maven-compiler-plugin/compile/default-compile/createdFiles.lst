@@ -1,0 +1,7 @@
+com\example\gameStudios\Game.class
+com\example\gameStudios\GameStudiosApplication.class
+com\example\gameStudios\Studio$StudioBuilder.class
+com\example\gameStudios\Game$GameBuilder.class
+com\example\gameStudios\GameDTO.class
+com\example\gameStudios\Games.class
+com\example\gameStudios\Studio.class
